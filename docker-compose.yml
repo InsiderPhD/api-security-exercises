@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-security-exercises:latest
+    container_name: api-security-exercises
+    ports:
+      - "5001:5001"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5001
+      - DB_PATH=/app/data/app.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
